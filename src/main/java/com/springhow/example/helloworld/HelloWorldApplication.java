@@ -4,11 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@RestController
 @SpringBootApplication
+@Controller
 public class HelloWorldApplication extends SpringBootServletInitializer {
 
     @Override
@@ -20,10 +20,27 @@ public class HelloWorldApplication extends SpringBootServletInitializer {
         SpringApplication.run(HelloWorldApplication.class);
     }
 
-
-    @RequestMapping("/")
-    String helloWorld() {
-        return "Hello !!!!!  Rushikesh Harne  !!!!!!! World!";
+    // Default route → show login page
+    @GetMapping("/")
+    public String index() {
+        return "login.html";   // serves from src/main/resources/static/
     }
 
+    // Login route
+    @GetMapping("/login")
+    public String login() {
+        return "login.html";
+    }
+
+    // Register route
+    @GetMapping("/register")
+    public String register() {
+        return "register.html";
+    }
+
+    // Dashboard route
+    @GetMapping("/dashboard")
+    public String dashboard() {
+        return "dashboard.html";
+    }
 }
