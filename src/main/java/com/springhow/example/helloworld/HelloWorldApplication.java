@@ -17,30 +17,31 @@ public class HelloWorldApplication extends SpringBootServletInitializer {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(HelloWorldApplication.class);
+        SpringApplication.run(HelloWorldApplication.class, args);
     }
 
-    // Default route → show login page
     @GetMapping("/")
-    public String index() {
-        return "login.html";   // serves from src/main/resources/static/
+    public String home() {
+        return "home";   // loads home.jsp
     }
 
-    // Login route
     @GetMapping("/login")
     public String login() {
-        return "login.html";
+        return "login";  // loads login.jsp
     }
 
-    // Register route
     @GetMapping("/register")
     public String register() {
-        return "register.html";
+        return "register"; // loads register.jsp
     }
 
-    // Dashboard route
     @GetMapping("/dashboard")
     public String dashboard() {
-        return "dashboard.html";
+        return "dashboard"; // loads dashboard.jsp
+    }
+
+    @GetMapping("/contact")
+    public String contact() {
+        return "contact"; // loads contact.jsp
     }
 }
